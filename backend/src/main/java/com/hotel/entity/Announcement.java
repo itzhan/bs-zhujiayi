@@ -1,0 +1,21 @@
+package com.hotel.entity;
+
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
+import java.time.LocalDateTime;
+
+@Data
+@TableName("announcement")
+public class Announcement {
+    @TableId(type = IdType.AUTO)
+    private Long id;
+    private String title;
+    private String content;
+    private Integer type;           // 1通知 2活动 3公告
+    private Integer status;         // 0草稿 1已发布 2已下架
+    private LocalDateTime publishTime;
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createdAt;
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    private LocalDateTime updatedAt;
+}
